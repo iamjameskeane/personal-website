@@ -12,38 +12,44 @@ interface Props {
 const { title, href, description, date, external = false, github, writeup } = Astro.props;
 ---
 <div class="group">
-  <div class="flex items-baseline justify-between mb-1">
-    <div class="flex items-baseline gap-3">
-      <a 
-        href={href} 
-        target={external ? "_blank" : undefined}
-        rel={external ? "noopener noreferrer" : undefined}
-        class="text-lg font-sans font-medium text-text-light dark:text-text-dark brandur-link"
-      >
-        {title}
-      </a>
-      {github && (
+  <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1 gap-1 md:gap-0">
+    <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
+      <div class="flex items-start justify-between md:justify-start gap-3">
         <a 
-          href={github} 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="text-xs secondary-link font-sans"
+          href={href} 
+          target={external ? "_blank" : undefined}
+          rel={external ? "noopener noreferrer" : undefined}
+          class="text-lg font-sans font-medium text-text-light dark:text-text-dark brandur-link"
         >
-          GitHub
+          {title}
         </a>
-      )}
-      {writeup && (
-        <a 
-          href={writeup} 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="text-xs secondary-link font-sans"
-        >
-          Writeup
-        </a>
-      )}
+        {date && <span class="text-sm text-[#999] dark:text-[#555] font-sans italic md:hidden pt-1">{date}</span>}
+      </div>
+
+      <div class="flex items-baseline gap-3">
+        {github && (
+          <a 
+            href={github} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="text-xs secondary-link font-sans"
+          >
+            GitHub
+          </a>
+        )}
+        {writeup && (
+          <a 
+            href={writeup} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="text-xs secondary-link font-sans"
+          >
+            Writeup
+          </a>
+        )}
+      </div>
     </div>
-    {date && <span class="text-sm text-[#999] dark:text-[#555] font-sans italic">{date}</span>}
+    {date && <span class="text-sm text-[#999] dark:text-[#555] font-sans italic hidden md:block">{date}</span>}
   </div>
   {description && (
     <p class="text-[#666] dark:text-[#888] text-sm leading-relaxed max-w-xl">
