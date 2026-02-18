@@ -41,10 +41,8 @@ const { title, description = "James Keane's personal website" } = Astro.props;
 				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
 					return localStorage.getItem('theme');
 				}
-				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					return 'dark';
-				}
-				return 'light';
+				// Default to dark mode instead of following system preference
+				return 'dark';
 			})();
 
 			if (theme === 'dark') {

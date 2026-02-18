@@ -2,7 +2,10 @@
 ---
 <button 
   id="theme-toggle" 
-  class="hover:text-[#111] dark:hover:text-[#fff] transition-colors duration-200 cursor-pointer underline decoration-[#eee] dark:decoration-[#1a1a1a] underline-offset-4"
+  class="transition-all duration-200 cursor-pointer underline underline-offset-4 decoration-transparent hover:decoration-current"
+  style="color: var(--c-text-faint);"
+  onmouseover="this.style.color='var(--c-text-main)'"
+  onmouseout="this.style.color='var(--c-text-faint)'"
 >
   <span id="theme-text">Switch to Dark Mode</span>
 </button>

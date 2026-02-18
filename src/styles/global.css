@@ -3,11 +3,55 @@
 @theme {
     --font-sans: "Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif";
     --font-serif: "Newsreader", "Georgia", "Cambria", "Times New Roman", "Times", "serif";
+}
 
-    --color-bg-light: #fbfaf8;
-    --color-text-light: #111;
-    --color-bg-dark: #0c0c0c;
-    --color-text-dark: #eee;
+:root {
+    /* Light Mode Palette */
+    --c-bg: #ffffff;
+    --c-text-main: #111111;
+    /* Primary headings, body text */
+    --c-text-secondary: #333333;
+    /* Company names, Institutions - Prominent but distinct */
+    --c-text-muted: #555555;
+    /* Descriptions */
+    --c-text-faint: #999999;
+    /* Dates, metadata, secondary info */
+    --c-border: #eeeeee;
+    /* Dividers */
+    --c-link-underline: #cccccc;
+    /* Default link underline */
+    --c-link-hover: #000000;
+    /* Link hover state */
+    --c-accent: #333333;
+    /* Extra UI elements */
+
+    /* Semantic mapping for old variables if needed for backward compat or transition */
+    --color-bg-light: var(--c-bg);
+    --color-text-light: var(--c-text-main);
+}
+
+.dark {
+    /* Dark Mode Palette */
+    --c-bg: #0c0c0c;
+    --c-text-main: #eeeeee;
+    /* Primary headings, body text */
+    --c-text-secondary: #dddddd;
+    /* Company names, Institutions - Increased brightness */
+    --c-text-muted: #999999;
+    /* Descriptions - clearer against black */
+    --c-text-faint: #555555;
+    /* Dates, metadata */
+    --c-border: #1a1a1a;
+    /* Dividers */
+    --c-link-underline: #333333;
+    /* Default link underline */
+    --c-link-hover: #ffffff;
+    /* Link hover state */
+    --c-accent: #cccccc;
+    /* Extra UI elements */
+
+    --color-bg-dark: var(--c-bg);
+    --color-text-dark: var(--c-text-main);
 }
 
 @layer base {
@@ -24,12 +68,20 @@
     }
 
     body {
-        @apply antialiased text-[#111] bg-[#fbfaf8] selection:bg-[#e2e2e2] transition-colors duration-300;
+        @apply antialiased transition-colors duration-300;
+        color: var(--c-text-main);
+        background-color: var(--c-bg);
         font-family: var(--font-sans);
     }
 
+    /* Selection color abstraction if needed, or keep hardcoded if specific to theme implementation */
+    ::selection {
+        background-color: var(--c-accent);
+        color: var(--c-bg);
+    }
+
     .dark body {
-        @apply text-[#d1d1d1] bg-[#0a0a0a] selection:bg-[#333];
+        /* Variables handle the switch, but we keep the class for specificity if needed by Tailwind */
     }
 
     h1,
@@ -39,7 +91,8 @@
     h5,
     h6 {
         font-family: var(--font-serif);
-        @apply font-normal tracking-tight transition-colors duration-300 text-[#000];
+        @apply font-normal tracking-tight transition-colors duration-300;
+        color: var(--c-text-main);
     }
 
     .dark h1,
@@ -48,7 +101,7 @@
     .dark h4,
     .dark h5,
     .dark h6 {
-        @apply text-[#fff];
+        /* Handled by variables */
     }
 
     p,
@@ -59,21 +112,29 @@
 }
 
 .brandur-link {
-    @apply border-b border-[#cccccc] hover:border-[#111] transition-colors duration-200 no-underline text-inherit;
+    @apply border-b transition-colors duration-200 no-underline;
+    border-color: var(--c-link-underline);
+    color: var(--c-text-main);
+}
+
+.brandur-link:hover {
+    border-color: var(--c-text-main);
 }
 
 .dark .brandur-link {
-    @apply border-[#333] hover:border-[#fff];
+    /* Handled by variables */
 }
 
 .secondary-link {
-    @apply border-b border-transparent transition-colors duration-200 text-[#999] dark:text-[#888];
+    @apply border-b border-transparent transition-colors duration-200;
+    color: var(--c-text-faint);
 }
 
 .secondary-link:hover {
-    @apply text-[#111] border-[#111];
+    color: var(--c-text-main);
+    border-color: var(--c-text-main);
 }
 
 .dark .secondary-link:hover {
-    @apply text-[#eee] border-[#eee];
+    /* Handled by variables */
 }

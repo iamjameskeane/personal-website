@@ -12,7 +12,7 @@ interface Props {
 const { title, titleHref, location, coordinates, coordinatesHref, description, date } = Astro.props;
 ---
 <div class="group">
-  <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1 gap-1 md:gap-0">
+  <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-3 md:mb-1 gap-1 md:gap-0">
     <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
       <div class="flex items-start justify-between md:justify-start gap-3">
         {titleHref ? (
@@ -20,20 +20,21 @@ const { title, titleHref, location, coordinates, coordinatesHref, description, d
             href={titleHref} 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="text-lg font-sans font-medium text-text-light dark:text-text-dark brandur-link"
+            class="text-lg font-sans font-medium brandur-link"
+            style="color: var(--c-text-main);"
           >
             {title}
           </a>
         ) : (
-          <span class="text-lg font-sans font-medium text-text-light dark:text-text-dark">
+          <span class="text-lg font-sans font-medium" style="color: var(--c-text-main);">
             {title}
           </span>
         )}
-        <span class="text-sm text-[#999] dark:text-[#888] font-sans italic md:hidden pt-1">{date}</span>
+        <span class="text-sm font-sans italic md:hidden pt-1" style="color: var(--c-text-faint);">{date}</span>
       </div>
       
       <div class="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-        <span class="text-xs text-[#999] dark:text-[#888] font-sans">
+        <span class="text-xs font-sans" style="color: var(--c-text-faint);">
           {location}
         </span>
         {coordinatesHref ? (
@@ -46,15 +47,15 @@ const { title, titleHref, location, coordinates, coordinatesHref, description, d
             {coordinates}
           </a>
         ) : (
-          <span class="text-xs text-[#999] dark:text-[#888] font-mono break-all sm:break-normal">
+          <span class="text-xs font-mono break-all sm:break-normal" style="color: var(--c-text-faint);">
             {coordinates}
           </span>
         )}
       </div>
     </div>
-    <span class="text-sm text-[#999] dark:text-[#888] font-sans italic hidden md:block">{date}</span>
+    <span class="text-sm font-sans italic hidden md:block" style="color: var(--c-text-faint);">{date}</span>
   </div>
-  <p class="text-[#666] dark:text-[#888] text-sm leading-relaxed max-w-xl">
+  <p class="text-sm leading-relaxed max-w-xl" style="color: var(--c-text-muted);">
     {description}
   </p>
 </div>
