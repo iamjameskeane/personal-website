@@ -65,3 +65,15 @@
 .dark .brandur-link {
     @apply border-[#333] hover:border-[#fff];
 }
+
+.secondary-link {
+    @apply border-b border-transparent transition-colors duration-200 text-[#999] dark:text-[#888];
+}
+
+.secondary-link:hover {
+    @apply text-[#111] border-[#111];
+}
+
+.dark .secondary-link:hover {
+    @apply text-[#eee] border-[#eee];
+}

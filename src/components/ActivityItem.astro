@@ -1,0 +1,54 @@
+---
+interface Props {
+  title: string;
+  titleHref?: string;
+  location: string;
+  coordinates: string;
+  coordinatesHref?: string;
+  description: string;
+  date: string;
+}
+
+const { title, titleHref, location, coordinates, coordinatesHref, description, date } = Astro.props;
+---
+<div class="group">
+  <div class="flex items-baseline justify-between mb-1">
+    <div class="flex items-baseline gap-3">
+      {titleHref ? (
+        <a 
+          href={titleHref} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="text-lg font-sans font-medium text-text-light dark:text-text-dark brandur-link"
+        >
+          {title}
+        </a>
+      ) : (
+        <span class="text-lg font-sans font-medium text-text-light dark:text-text-dark">
+          {title}
+        </span>
+      )}
+      <span class="text-xs text-[#999] dark:text-[#888] font-sans">
+        {location}
+      </span>
+      {coordinatesHref ? (
+        <a 
+          href={coordinatesHref} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="text-xs secondary-link font-mono"
+        >
+          {coordinates}
+        </a>
+      ) : (
+        <span class="text-xs text-[#999] dark:text-[#888] font-mono">
+          {coordinates}
+        </span>
+      )}
+    </div>
+    <span class="text-sm text-[#999] dark:text-[#888] font-sans italic">{date}</span>
+  </div>
+  <p class="text-[#666] dark:text-[#888] text-sm leading-relaxed max-w-xl">
+    {description}
+  </p>
+</div>

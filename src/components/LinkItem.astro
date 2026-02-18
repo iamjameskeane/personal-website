@@ -18,7 +18,7 @@ const { title, href, description, date, external = false, github, writeup } = As
         href={href} 
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
-        class="text-lg font-sans font-medium text-[#111] dark:text-[#eee] brandur-link"
+        class="text-lg font-sans font-medium text-text-light dark:text-text-dark brandur-link"
       >
         {title}
       </a>
@@ -27,7 +27,7 @@ const { title, href, description, date, external = false, github, writeup } = As
           href={github} 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="text-xs text-[#999] dark:text-[#555] hover:text-[#111] dark:hover:text-[#eee] font-sans border-b border-transparent hover:border-[#111] dark:hover:border-[#eee] transition-colors"
+          class="text-xs secondary-link font-sans"
         >
           GitHub
         </a>
@@ -37,7 +37,7 @@ const { title, href, description, date, external = false, github, writeup } = As
           href={writeup} 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="text-xs text-[#999] dark:text-[#555] hover:text-[#111] dark:hover:text-[#eee] font-sans border-b border-transparent hover:border-[#111] dark:hover:border-[#eee] transition-colors"
+          class="text-xs secondary-link font-sans"
         >
           Writeup
         </a>
