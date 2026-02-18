@@ -5,11 +5,11 @@ interface Props {
 
 const { title } = Astro.props;
 ---
-<section class="mb-20 md:mb-16">
-  <h2 class="text-2xl mb-10 md:mb-8 border-b pb-2 uppercase tracking-widest text-sm font-sans font-semibold" style="color: var(--c-text-faint); border-color: var(--c-border);">
+<section class="mb-16">
+  <h2 class="text-2xl mb-8 border-b pb-2 uppercase tracking-widest text-sm font-sans font-semibold" style="color: var(--c-text-faint); border-color: var(--c-border);">
     {title}
   </h2>
-  <div class="space-y-10 md:space-y-8">
+  <div class="space-y-8">
     <slot />
   </div>
 </section>

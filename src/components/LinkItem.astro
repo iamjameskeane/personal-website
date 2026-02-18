@@ -46,9 +46,9 @@ const parts = title.split(' — ');
             href={github} 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="text-xs secondary-link font-sans"
+            class="text-xs secondary-link font-sans group-hover/link:text-text-main"
           >
-            Repository
+            Repository <span class="text-[10px]">↗</span>
           </a>
         )}
         {writeup && (
@@ -56,9 +56,9 @@ const parts = title.split(' — ');
             href={writeup} 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="text-xs secondary-link font-sans"
+            class="text-xs secondary-link font-sans group-hover/link:text-text-main"
           >
-            Writeup
+            Writeup <span class="text-[10px]">↗</span>
           </a>
         )}
       </div>

@@ -35,14 +35,14 @@
     --c-bg: #0c0c0c;
     --c-text-main: #eeeeee;
     /* Primary headings, body text */
-    --c-text-secondary: #dddddd;
-    /* Company names, Institutions - Increased brightness */
-    --c-text-muted: #999999;
-    /* Descriptions - clearer against black */
-    --c-text-faint: #555555;
-    /* Dates, metadata */
-    --c-border: #1a1a1a;
-    /* Dividers */
+    --c-text-secondary: #e5e5e5;
+    /* Company names, Institutions - Increased contrast (was #dddddd) */
+    --c-text-muted: #b3b3b3;
+    /* Descriptions - significantly lighter for legibility (was #999999) */
+    --c-text-faint: #888888;
+    /* Dates, metadata - visible but secondary (was #555555) */
+    --c-border: #2a2a2a;
+    /* Dividers - slightly more visible */
     --c-link-underline: #333333;
     /* Default link underline */
     --c-link-hover: #ffffff;

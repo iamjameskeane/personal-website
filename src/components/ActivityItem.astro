@@ -42,12 +42,12 @@ const { title, titleHref, location, coordinates, coordinatesHref, description, d
             href={coordinatesHref} 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="text-xs secondary-link font-mono break-all sm:break-normal"
+            class="text-xs secondary-link font-mono break-all sm:break-normal w-full md:w-auto mt-0.5 md:mt-0"
           >
             {coordinates}
           </a>
         ) : (
-          <span class="text-xs font-mono break-all sm:break-normal" style="color: var(--c-text-faint);">
+          <span class="text-xs font-mono break-all sm:break-normal w-full md:w-auto mt-0.5 md:mt-0" style="color: var(--c-text-faint);">
             {coordinates}
           </span>
         )}
