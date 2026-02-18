@@ -10,6 +10,9 @@ interface Props {
 }
 
 const { title, href, description, date, external = false, github, writeup } = Astro.props;
+
+// Split title by em-dash to handle Role/Company stacking on mobile
+const parts = title.split(' — ');
 ---
 <div class="group">
   <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1 gap-1 md:gap-0">
@@ -21,7 +24,17 @@ const { title, href, description, date, external = false, github, writeup } = As
           rel={external ? "noopener noreferrer" : undefined}
           class="text-lg font-sans font-medium text-text-light dark:text-text-dark brandur-link"
         >
-          {title}
+          {parts.length > 1 ? (
+            <span class="flex flex-col md:flex-row md:items-baseline md:gap-2">
+              <span>{parts[0]}</span>
+              <span class="hidden md:inline text-text-light/20 dark:text-text-dark/30">—</span>
+              <span class="text-base md:text-lg text-[#888] dark:text-[#666] md:text-inherit font-normal md:font-medium">
+                {parts[1]}
+              </span>
+            </span>
+          ) : (
+            title
+          )}
         </a>
         {date && <span class="text-sm text-[#999] dark:text-[#555] font-sans italic md:hidden pt-1">{date}</span>}
       </div>
