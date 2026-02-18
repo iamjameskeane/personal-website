@@ -1,0 +1,53 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  description?: string;
+  date?: string;
+  external?: boolean;
+  github?: string;
+  writeup?: string;
+}
+
+const { title, href, description, date, external = false, github, writeup } = Astro.props;
+---
+<div class="group">
+  <div class="flex items-baseline justify-between mb-1">
+    <div class="flex items-baseline gap-3">
+      <a 
+        href={href} 
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        class="text-lg font-sans font-medium text-[#111] dark:text-[#eee] brandur-link"
+      >
+        {title}
+      </a>
+      {github && (
+        <a 
+          href={github} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="text-xs text-[#999] dark:text-[#555] hover:text-[#111] dark:hover:text-[#eee] font-sans border-b border-transparent hover:border-[#111] dark:hover:border-[#eee] transition-colors"
+        >
+          GitHub
+        </a>
+      )}
+      {writeup && (
+        <a 
+          href={writeup} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="text-xs text-[#999] dark:text-[#555] hover:text-[#111] dark:hover:text-[#eee] font-sans border-b border-transparent hover:border-[#111] dark:hover:border-[#eee] transition-colors"
+        >
+          Writeup
+        </a>
+      )}
+    </div>
+    {date && <span class="text-sm text-[#999] dark:text-[#555] font-sans italic">{date}</span>}
+  </div>
+  {description && (
+    <p class="text-[#666] dark:text-[#888] text-sm leading-relaxed max-w-xl">
+      {description}
+    </p>
+  )}
+</div>

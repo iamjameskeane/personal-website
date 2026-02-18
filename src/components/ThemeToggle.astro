@@ -1,0 +1,39 @@
+---
+---
+<button 
+  id="theme-toggle" 
+  class="hover:text-[#111] dark:hover:text-[#fff] transition-colors duration-200 cursor-pointer underline decoration-[#eee] dark:decoration-[#1a1a1a] underline-offset-4"
+>
+  <span id="theme-text">Switch to Dark Mode</span>
+</button>
+
+<script>
+  function setupThemeToggle() {
+    const toggle = document.getElementById('theme-toggle');
+    const text = document.getElementById('theme-text');
+    if (!toggle || !text) return;
+
+    function applyTheme(isDark: boolean) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        text!.textContent = 'Switch to Light Mode';
+      } else {
+        document.documentElement.classList.remove('dark');
+        text!.textContent = 'Switch to Dark Mode';
+      }
+    }
+
+    // Initial sync
+    const isDark = document.documentElement.classList.contains('dark');
+    applyTheme(isDark);
+
+    toggle.addEventListener('click', () => {
+      const isDarkNow = !document.documentElement.classList.contains('dark');
+      applyTheme(isDarkNow);
+      localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+    });
+  }
+
+  setupThemeToggle();
+  document.addEventListener('astro:after-swap', setupThemeToggle);
+</script>

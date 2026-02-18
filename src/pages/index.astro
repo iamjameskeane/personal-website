@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import LinkItem from '../components/LinkItem.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+---
+
+<Layout title="James Keane | Software Engineer">
+	<main>
+		<Hero />
+
+		<Section title="Career">
+			<LinkItem 
+				title="Founding Engineer — Unify AI" 
+				href="https://unify.ai" 
+				external={true}
+				description="Building the future of agentic workflows. YC W23."
+				date="2022 — 2026"
+			/>
+		</Section>
+
+		<Section title="Projects">
+			<LinkItem 
+				title="The Briefing" 
+				href="https://realpolitikworld.substack.com/" 
+				github="https://github.com/iamjameskeane/the-briefing"
+				external={true}
+				description="A multi-agent editorial pipeline that transforms raw event streams into structured intelligence analysis."
+				date="2026"
+			/>
+			<LinkItem 
+				title="Realpolitik" 
+				href="https://realpolitik.world" 
+				github="https://github.com/iamjameskeane/realpolitik"
+				writeup="https://dev.to/iamjameskeane/i-built-a-geopolitical-war-room-while-high-on-morphine-and-then-actually-shipped-it-ed2"
+				external={true}
+				description="A real-time geopolitical event monitoring dashboard with a 3D interactive globe and AI analysis."
+				date="2025"
+			/>
+			<LinkItem 
+				title="Ivy" 
+				href="https://ivy-llc.github.io/docs/" 
+				github="https://github.com/ivy-llc/ivy"
+				external={true}
+				description="An open-source machine learning framework and transpiler for PyTorch, TensorFlow, JAX, and NumPy."
+				date="2022 — 2023"
+			/>
+		</Section>
+
+		<Section title="Education">
+			<LinkItem 
+				title="BSc Artificial Intelligence" 
+				href="https://www.ed.ac.uk/" 
+				description="University of Edinburgh. Upper Second Class Honours (2.1)."
+				date="2019 — 2023"
+			/>
+		</Section>
+
+
+		<Section title="Connect">
+			<div class="flex flex-wrap gap-x-6 gap-y-2 font-sans text-sm">
+				<a href="mailto:jameskeane508@gmail.com" class="brandur-link font-medium">Email</a>
+				<a href="https://x.com/iamjameskeane" class="brandur-link font-medium">X</a>
+				<a href="https://github.com/iamjameskeane" class="brandur-link font-medium">GitHub</a>
+				<a href="https://linkedin.com/in/iamjameskeane" class="brandur-link font-medium">LinkedIn</a>
+				<a href="https://instagram.com/iamjameskeane" class="brandur-link font-medium">Instagram</a>
+			</div>
+		</Section>
+
+		<footer class="mt-24 pt-8 border-t border-[#eee] dark:border-[#1a1a1a] opacity-40 text-xs font-sans tracking-tight flex justify-between items-center">
+			<p>&copy; {new Date().getFullYear()} James Keane.</p>
+			<ThemeToggle />
+		</footer>
+	</main>
+</Layout>
