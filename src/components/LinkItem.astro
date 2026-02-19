@@ -1,7 +1,7 @@
 ---
 interface Props {
   title: string;
-  href: string;
+  href?: string;
   description?: string;
   date?: string;
   external?: boolean;
@@ -18,25 +18,46 @@ const parts = title.split(' — ');
   <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-3 md:mb-1 gap-1 md:gap-0">
     <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
       <div class="flex items-start justify-between md:justify-start gap-3">
-        <a 
-          href={href} 
-          target={external ? "_blank" : undefined}
-          rel={external ? "noopener noreferrer" : undefined}
-          class="text-lg font-sans font-medium"
-          style="color: var(--c-text-main);"
-        >
-          {parts.length > 1 ? (
-            <>
-              <span class="brandur-link block mb-1 md:mb-0 md:inline md:mr-2">{parts[0]}</span>
-              <span class="hidden md:inline mr-2" style="color: var(--c-text-faint);">—</span>
-              <span class="block md:inline text-base md:text-lg font-normal md:font-medium italic" style="color: var(--c-text-secondary);">
-                {parts[1]}
+        {parts.length > 1 ? (
+          <div>
+            {href ? (
+              <a 
+                href={href} 
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+                class="brandur-link text-lg font-sans font-medium block mb-1 md:mb-0 md:inline md:mr-2"
+                style="color: var(--c-text-main);"
+              >
+                {parts[0]}
+              </a>
+            ) : (
+              <span class="text-lg font-sans font-medium block mb-1 md:mb-0 md:inline md:mr-2" style="color: var(--c-text-main);">
+                {parts[0]}
               </span>
-            </>
+            )}
+            
+            <span class="hidden md:inline mr-2" style="color: var(--c-text-faint);">—</span>
+            <span class="block md:inline text-base md:text-lg font-normal md:font-medium italic" style="color: var(--c-text-secondary);">
+              {parts[1]}
+            </span>
+          </div>
+        ) : (
+          href ? (
+            <a 
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              class="brandur-link text-lg font-sans font-medium"
+              style="color: var(--c-text-main);"
+            >
+              {title}
+            </a>
           ) : (
-            <span class="brandur-link">{title}</span>
-          )}
-        </a>
+            <span class="text-lg font-sans font-medium" style="color: var(--c-text-main);">
+              {title}
+            </span>
+          )
+        )}
         {date && <span class="text-sm font-sans italic md:hidden pt-1" style="color: var(--c-text-faint);">{date}</span>}
       </div>
 

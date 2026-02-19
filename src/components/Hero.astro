@@ -16,6 +16,15 @@ import profileImage from '../assets/profile.jpg';
     </h1>
   </div>
   <p class="text-xl leading-relaxed max-w-2xl font-sans" style="color: var(--c-text-muted);">
-    Building applied intelligence systems and agentic workflows. Usually found on a mountain when offline.
+    Building applied intelligence systems and agentic workflows. Usually found on a mountain when <span id="offline-trigger" class="cursor-pointer brandur-link">offline</span>.
   </p>
 </section>
+
+<script>
+  import { isOffline } from '../stores/offline';
+  
+  const trigger = document.getElementById('offline-trigger');
+  trigger?.addEventListener('click', () => {
+    isOffline.set(true);
+  });
+</script>

@@ -111,14 +111,56 @@
     }
 }
 
-.brandur-link {
-    @apply border-b transition-colors duration-200 no-underline;
-    border-color: var(--c-link-underline);
-    color: var(--c-text-main);
+/* Center-out underline animation */
+.hover-underline {
+    position: relative;
+    text-decoration: none;
+    border-bottom: 1px solid var(--c-link-underline);
 }
 
-.brandur-link:hover {
-    border-color: var(--c-text-main);
+.hover-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-underline:hover {
+    border-bottom-color: transparent;
+    /* Optional: hide shadow if needed, but overlap usually covers it. Keeping transparent prevents double-thick look if sub-pixel rendering issues occur */
+}
+
+.hover-underline:hover::after {
+    transform: scaleX(1);
+}
+
+.brandur-link {
+    @apply transition-colors duration-300 relative inline-block;
+    color: var(--c-text-main);
+    border-bottom: 1px solid var(--c-link-underline);
+}
+
+.brandur-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--c-text-main);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.brandur-link:hover::after {
+    transform: scaleX(1);
 }
 
 .dark .brandur-link {
@@ -126,15 +168,42 @@
 }
 
 .secondary-link {
-    @apply border-b border-transparent transition-colors duration-200;
+    @apply transition-colors duration-300 relative inline-block;
     color: var(--c-text-faint);
+    border-bottom: 1px solid var(--c-border);
+    /* Slightly lighter for secondary */
+}
+
+.secondary-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--c-text-main);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .secondary-link:hover {
     color: var(--c-text-main);
-    border-color: var(--c-text-main);
 }
 
-.dark .secondary-link:hover {
-    /* Handled by variables */
+.secondary-link:hover::after {
+    transform: scaleX(1);
+}
+
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
 }
