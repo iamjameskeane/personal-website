@@ -170,8 +170,6 @@
 .secondary-link {
     @apply transition-colors duration-300 relative inline-block;
     color: var(--c-text-faint);
-    border-bottom: 1px solid var(--c-border);
-    /* Slightly lighter for secondary */
 }
 
 .secondary-link::after {
