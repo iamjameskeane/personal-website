@@ -2,6 +2,7 @@
 interface Props {
   title: string;
   href?: string;
+  subtext?: string;
   description?: string;
   date?: string;
   external?: boolean;
@@ -9,7 +10,7 @@ interface Props {
   writeup?: string;
 }
 
-const { title, href, description, date, external = false, github, writeup } = Astro.props;
+const { title, href, subtext, description, date, external = false, github, writeup } = Astro.props;
 
 // Split title by em-dash to handle Role/Company stacking on mobile
 const parts = title.split(' — ');
@@ -51,10 +52,12 @@ const parts = title.split(' — ');
               style="color: var(--c-text-main);"
             >
               {title}
+              {subtext && <span class="block md:inline md:ml-2 text-base font-normal no-underline" style="color: var(--c-text-faint);">{subtext}</span>}
             </a>
           ) : (
             <span class="text-lg font-sans font-medium" style="color: var(--c-text-main);">
               {title}
+              {subtext && <span class="block md:inline md:ml-2 text-base font-normal" style="color: var(--c-text-faint);">{subtext}</span>}
             </span>
           )
         )}

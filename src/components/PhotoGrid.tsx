@@ -31,7 +31,7 @@ export default function PhotoGrid() {
     const $isOffline = useStore(isOffline);
 
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        const checkMobile = () => setIsMobile(window.matchMedia("(max-width: 768px) or (hover: none)").matches);
         checkMobile();
         window.addEventListener("resize", checkMobile);
         return () => window.removeEventListener("resize", checkMobile);
@@ -72,7 +72,7 @@ export default function PhotoGrid() {
                         <motion.img
                             initial={{ filter: "grayscale(100%)" }}
                             whileInView={isMobile ? { filter: "grayscale(0%)" } : undefined}
-                            viewport={isMobile ? { margin: "-45% 0px -45% 0px" } : undefined}
+                            viewport={isMobile ? { margin: "-42.5% 0px -42.5% 0px" } : undefined}
                             whileHover={!isMobile ? { filter: "grayscale(0%)" } : undefined}
                             transition={{ duration: 0.5 }}
                             src={imageSrc}
